@@ -42,4 +42,6 @@ againButton.addEventListener('click', function () {
   document.querySelector('.message').textContent = 'Start guessing...';
   document.querySelector('.guess').value = 0;
   score.textContent = 20;
+  sc = 20;
+  guessButton.disabled = false;
 });
