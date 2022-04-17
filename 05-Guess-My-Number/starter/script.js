@@ -32,6 +32,7 @@ let message = document.querySelector('.message');
 let guessButton = document.querySelector('.check');
 let againButton = document.querySelector('.again');
 const score = document.querySelector('.score');
+let numbers = document.querySelector('.number');
 
 guessButton.addEventListener('click', game);
 
@@ -41,7 +42,8 @@ againButton.addEventListener('click', function () {
   rndNum = Math.trunc(Math.random() * 21) + 1;
   document.querySelector('.message').textContent = 'Start guessing...';
   document.querySelector('.guess').value = 0;
-  score.textContent = 20;
+  score.textContent = String(20);
   sc = 20;
   guessButton.disabled = false;
+  document.body.style.backgroundColor = '#222222';
 });
