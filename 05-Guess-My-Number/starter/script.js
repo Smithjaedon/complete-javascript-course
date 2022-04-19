@@ -1,5 +1,7 @@
 'use strict';
 let sc = 20;
+let hsc = 0;
+
 let rndNum = Math.trunc(Math.random() * 20) + 1;
 let message = document.querySelector('.message');
 let guessButton = document.querySelector('.check');
@@ -11,16 +13,20 @@ let highscore = document.querySelector('.highscore');
 const game = function () {
   let guess = Number(document.querySelector('.guess').value);
   if (guess === rndNum) {
-    message.textContent = '✅ correct';
+    changeMessage('✅ correct');
+    numbers.style.width = '30rem';
     document.body.style.backgroundColor = 'darkgreen';
     numbers.innerHTML = rndNum;
-    highscore.textContent = sc;
+    if (sc > hsc) {
+      highscore.textContent = sc;
+      hsc = sc;
+    }
   } else if (guess > rndNum) {
-    message.textContent = '📈 high';
+    changeMessage('📈 high');
     sc--;
     score.textContent = sc;
   } else if (guess < rndNum) {
-    message.textContent = '📉 low';
+   changeMessage('📉 low');
     sc--;
     score.textContent = sc;
   }
@@ -37,6 +43,9 @@ const enter = function (event) {
   }
 };
 
+const changeMessage = function (text) {
+  message.textContent = text;
+}
 
 
 
@@ -46,11 +55,12 @@ guessButton.addEventListener('keyup', enter);
 
 againButton.addEventListener('click', function () {
   rndNum = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector('.message').textContent = 'Start guessing...';
+  changeMessage('Start guessing...');
   document.querySelector('.guess').value = 0;
   score.textContent = String(20);
   sc = 20;
   guessButton.disabled = false;
+  numbers.style.width = '15rem';
   document.body.style.backgroundColor = '#222222';
   numbers.innerHTML = "?";
 });
