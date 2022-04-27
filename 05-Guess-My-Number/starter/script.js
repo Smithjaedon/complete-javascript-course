@@ -21,19 +21,20 @@ const game = function () {
       highscore.textContent = sc;
       hsc = sc;
     }
-  } else if (guess > rndNum) {
-    changeMessage('📈 high');
-    sc--;
-    score.textContent = sc;
-  } else if (guess < rndNum) {
-   changeMessage('📉 low');
-    sc--;
-    score.textContent = sc;
   }
-  if (sc === 0) {
-    guessButton.disabled = true;
-    document.body.style.backgroundColor = "darkred";
-  }
+  else if (guess !== rndNum) {
+    if (guess > rndNum) {
+      changeMessage('📈 high');
+    } else if (guess < rndNum) {
+      changeMessage('📉 low');
+      }
+      sc--;
+      score.textContent = sc;
+    }
+    if (sc === 0) {
+      guessButton.disabled = true;
+      document.body.style.backgroundColor = "darkred";
+    }
 };
 
 const enter = function (event) {
