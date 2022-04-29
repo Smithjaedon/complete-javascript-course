@@ -24,9 +24,8 @@ const game = function () {
   }
   else if (guess !== rndNum) {
     if (guess > rndNum) {
-      changeMessage('📈 high');
     } else if (guess < rndNum) {
-      changeMessage('📉 low');
+      changeMessage(guess < rndNum ? '📈 high':'📉 low');
       }
       sc--;
       score.textContent = sc;
