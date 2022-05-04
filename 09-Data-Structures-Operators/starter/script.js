@@ -27,3 +27,13 @@ const restaurant = {
     },
   },
 };
+
+//deconstruct the restaurant object for opening hours
+const { thu, fri, sat } = restaurant.openingHours;
+const {name, location: address, mainMenu: menu, openingHours: hours} = restaurant;
+const {
+  fri: {open: o, close: c},
+} = restaurant.openingHours;
+console.log(name,address,menu,hours );
+console.log(o,c);
+console.log(thu,fri,sat);
